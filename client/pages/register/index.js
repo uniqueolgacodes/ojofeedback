@@ -105,7 +105,7 @@ export default function Register() {
                     <button type='submit' className="btn btn-primary w-50" onClick={(async(e) => await submitDetails(e))} onSubmit={(async(e) => await submitDetails(e))}>Sign Up</button>
                   </div>
                   <div className='text-center'>
-                    <a className='text-light text-decoration-none'>Already have an account? Sign In</a>
+                    <a className='text-light text-decoration-none' href='/login'>Already have an account? Sign In</a>
                   </div>
                 </div>
                 {/* FORMS */}

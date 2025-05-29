@@ -7,11 +7,11 @@ export default function Footer() {
         <div className="row gx-5">
           {/* Company Info */}
           <div className="col-md-4 mb-3 mb-md-0 text-center text-md-start">
-            <p className='text-light fw-bolder fs-4 mb-1'>Feedback.ROCKS</p>
+            <p className='text-light fw-bolder fs-4 mb-1'>Faculty Feedback</p>
             <div className='d-flex d-md-block justify-content-center justify-content-md-start'>
               <div className='bg-light rounded-1' style={{ width: "6rem", height: "2px" }} />
             </div>
-            <p className='text-gray500 mt-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum doloremque illo unde quidem quasi autem!</p>
+            <p className='text-gray500 mt-3'>Built with ❤️ by Ojo David DU0355</p>
           </div>
           {/* FIRST SET OF LINKS */}
           <div className="text-center text-md-start col-md-3">
@@ -65,13 +65,13 @@ export default function Footer() {
             </div>
             <ul className="list-unstyled mt-3">
               <li className='pb-1'>
-                <span className='text-gray500 cursor' data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Copy Phone Number">+0 123 456 789</span>
+                <span className='text-gray500 cursor' data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Copy Phone Number">+2348033314732</span>
               </li>
               <li className='pb-1'>
-                <span className='text-gray500'>Belmont, California(CA), 94002</span>
+                <span className='text-gray500'>Ibadan, Nigeria</span>
               </li>
               <li className='pb-1'>
-                <span className='text-gray500 cursor' data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Copy Email Address">contact@feedback.rocks</span>  
+                <span className='text-gray500 cursor' data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Copy Email Address">feedback@dominionuniversity.edu.ng</span>  
               </li>
               <li className='pb-1'>
                 <a href="" className='text-decoration-none hoverEffect'>
@@ -113,7 +113,7 @@ export default function Footer() {
         <div className="row mt-3">
           <div className='text-center'>
             <div className="text-light py-4 align-middle border-top border-gray700">
-              &copy; Copyright 2022 - Feedback.ROCKS
+              &copy; Copyright 2025 - CAS_Feedback by Ojo David
             </div>
           </div>
         </div>

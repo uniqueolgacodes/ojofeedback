@@ -68,7 +68,7 @@ export default function Login() {
                   </div>
                   {/* ADD LINK */}
                   <div className='text-center'>
-                    <a className='text-light text-decoration-none'>Don't have account? Sign Up</a>
+                    <a className='text-light text-decoration-none' href='/register'>Don't have account? Sign Up</a>
                   </div>
                 </div>
               </div>

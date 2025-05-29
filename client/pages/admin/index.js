@@ -29,7 +29,7 @@ export default function Admin() {
           <div className="row py-6">
             <div>
               <p className='text-white px-4 px-md-0 p-0 m-0 fs-4 fw-bold'>Admin Dashboard</p>
-              <p className='text-gray600 p-0 m-0 mb-3 px-4 px-md-0'>Manage website by using different tools.</p>
+              <p className='text-gray600 p-0 m-0 mb-3 px-4 px-md-0'>Manage the website by using different tools.</p>
             </div>
             <div className="row d-flex justify-content-center mt-4">
               <Link href={"/admin/users"}>

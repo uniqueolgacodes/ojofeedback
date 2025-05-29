@@ -46,7 +46,7 @@ export const signIn = (details) => {
           errorBar("User with provided credentials couldn't be found.");
           dispatch({
             type: "LOGIN_ERROR",
-            paylaod: result
+            payload: result
           })
         }
       }
@@ -94,7 +94,8 @@ export const signOut = () => {
   return (dispatch) => {
     dispatch({
       type: "LOGOUT",
-      paylaod: {}
+      payload: {}
     })
   }
 }
+console.log("Server URL is:", process.env.NEXT_PUBLIC_SERVER_URL);

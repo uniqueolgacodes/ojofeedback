@@ -33,7 +33,7 @@ export default function Navigation({ active = "home" }) {
           <Link href="/">
             <a className="navbar-brand">
               <img className='align-middle' src="https://cdn-icons-png.flaticon.com/32/2665/2665038.png" alt="" />
-              <span className='align-middle px-3'>Feedback&trade;</span>
+              <span className='align-middle px-3'>CAS Feedback</span>
             </a>
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
