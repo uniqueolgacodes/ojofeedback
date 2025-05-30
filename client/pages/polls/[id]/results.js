@@ -4,11 +4,11 @@ import { useRouter } from 'next/router'
 import Navigation from '../../../components/Navigation/Navigation'
 import Footer from '../../../components/Other/Footer'
 import Loading from '../../../components/Other/Loading'
-import { getPoll } from '../../../utils/utils'
 import DescriptionBox from '../../../components/Other/DescriptionBox'
 import { Pie } from 'react-chartjs-2'
 import 'chart.js/auto';
 import { useSelector } from 'react-redux'
+import { getPoll, getProfile } from '../../../utils/utils'
 
 export default function NewPoll() {
   const auth = useSelector((state) => state.auth);

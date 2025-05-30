@@ -34,7 +34,7 @@ export default function PollDetails() {
     if(!auth?.id && poll?.needAuth == true) return errorBar("If you want to vote for this Poll you need to be Logged in.");
     if(poll?.limit > 0 && poll?.submitters?.length == poll?.limit && auth?.id) setIsLimit(true);
     if(isLimit == true) return errorBar(`This Poll has limit of ${poll?.limit} users that can vote`);
-    await submitPoll(id, user, selected).then((res) => {
+    await submitPoll(id, auth.id, selected).then((res) => {
       successBar("You have voted for this poll successfully.");
     });
   }
