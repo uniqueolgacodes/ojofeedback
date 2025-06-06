@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const SurveySchema = new mongoose.Schema({
   id: {
@@ -49,4 +49,5 @@ const SurveySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Survey", SurveySchema);
+const Survey = mongoose.model('Survey', SurveySchema);
+export default Survey;

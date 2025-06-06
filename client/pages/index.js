@@ -5,8 +5,23 @@ import Navigation from '../components/Navigation/Navigation'
 import Footer from '../components/Other/Footer';
 import Link from 'next/link';
 import { myLoader } from '../utils/utils';
+import { useState } from 'react';
+import ComplaintModal from '../components/ComplaintModal';
+
+
+
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+    
   return (
     <div className='hideOverflow'>
       <Navigation />
@@ -34,10 +49,15 @@ export default function Home() {
                   <p className="title display-6 fw-bolder">FACULTY FEEDBACK</p>
                   <p className="">The Faculty Feedback System at Dominion University (DU) is a digital platform designed to enhance the quality of education by fostering open and constructive communication between students and faculty. This system enables students to provide anonymous, structured feedback on various aspects of teaching and course delivery, including clarity of instruction, punctuality, engagement, and overall effectiveness. By analyzing the feedback, the university can identify strengths and areas for improvement within the academic environment. Ultimately, the Faculty Feedback System supports DUs commitment to academic excellence, accountability, and continuous improvement in teaching standards.
                   </p>
-                  <a href='/register'>
+                 
 
-                  <button className='btn btn-primary fw-bold mt-3 px-3'>Let's  see more!</button>
-                  </a>
+                  <button 
+                    onClick={openModal} 
+                    className='btn btn-primary fw-bold mt-3 px-3'
+                  >
+                    Drop a complaint.
+                  </button>
+                
                 </div>
               </div>
               <div className="col-md-6 text-center align-middle my-2 my-md-6">
@@ -46,6 +66,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <ComplaintModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal}
+      />
       </div>
       {/* FEATURES SECTION */}
       <div className='bg-secdark'>
@@ -261,6 +285,7 @@ export default function Home() {
       </div>
       {/* FOOTER COMPONENT */}
       <Footer />
+      
     </div>
   )
 }

@@ -35,15 +35,20 @@ export default function NewPoll() {
     setAnswers([...inputArr])
   }
 
-  async function getUserProfile() {
-    if(auth.id) {
-      await getProfile(auth.id).then((res) => {
-        if(res?.id) setAuthor(auth.id);
-      });
-    } else {
-      setAuthor("-1");
-    }
+const [userRole, setUserRole] = useState(0); // default to 0
+
+async function getUserProfile() {
+  if (auth.id) {
+    await getProfile(auth.id).then((res) => {
+      if (res?.id) {
+        setAuthor(auth.id);
+        setUserRole(res.role); // Save role from backend
+      }
+    });
+  } else {
+    setAuthor("-1");
   }
+}
 
   useEffect(() => {
     getUserProfile();
@@ -51,6 +56,12 @@ export default function NewPoll() {
 
   const submitNewPoll = async(e) => {
     e.preventDefault();
+
+      if (userRole === 0) {
+    return errorBar("Only ADMINS can create polls."); // role check
+  }
+
+
     if(titleRef.current.value == "") return errorBar("You didn't enter Poll Title");
     if(shortDescRef.current.value == "") return errorBar("You didn't enter Short Description");
     if(descriptionRef.current.value == "") return errorBar("You didn't enter Poll Description");

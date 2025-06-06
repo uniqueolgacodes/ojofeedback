@@ -57,8 +57,8 @@ export const isLogged = async() => {
 export const decodeToken = async() => {
   return await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/decode`, {
     method: "GET",
+    credentials: 'include',
     headers: {
-      'credentials': 'include',
       'x-access-token': cookie.get("token")
     }
   }).then(async(res) => {

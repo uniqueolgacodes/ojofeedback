@@ -1,11 +1,21 @@
-const router = require("express").Router();
-const User = require("../models/User");
-const Poll = require("../models/Poll");
-const Survey = require("../models/Survey");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const Comment = require("../models/Comment");
-const { generateRandomID } = require("../utils/utils");
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+
+import User from '../models/User.js';
+import Complaint from '../models/Complaint.js';
+import Poll from '../models/Poll.js';
+import Survey from '../models/Survey.js';
+import Comment from '../models/Comment.js';
+
+import { generateRandomID } from '../utils/utils.js';
+
+const router = express.Router();
+dotenv.config();
+
+ 
+
 
 router.use(cors({
   credentials: true,
@@ -13,6 +23,7 @@ router.use(cors({
 }));
 
 router.use(cookieParser());
+
 
 router.get("/users", async(req, res) => {
   // if(req.headers.origin != process.env.SERVER_CLIENT_URL) return res.sendStatus(401);
@@ -282,4 +293,70 @@ router.post("/comments/new", async(req, res) => {
   });
 });
 
-module.exports = router;
+router.post('/complaints/new', async (req, res) => {
+  if(req.headers.origin != process.env.SERVER_CLIENT_URL) return res.sendStatus(401);
+  // CORS check - adjust according to your existing CORS setup
+  const allowedOrigins = [
+    process.env.SERVER_CLIENT_URL,
+    'http://localhost:3000' // Add other allowed origins as needed
+  ];
+  
+  if (!allowedOrigins.includes(req.headers.origin)) {
+    return res.status(403).json({ 
+      success: false,
+      code: 403,
+      message: "Origin not allowed"
+    });
+  }
+
+  // Input validation
+  const { name, title, complaint, email, level } = req.body;
+
+  if (!title || !title.trim()) {
+    return res.status(400).json({ 
+      success: false,
+      code: 400,
+      message: "Complaint title is required" 
+    });
+  }
+
+  if (!complaint || !complaint.trim()) {
+    return res.status(400).json({ 
+      success: false,
+      code: 400,
+      message: "Complaint description is required" 
+    });
+  }
+
+  try {
+    const newComplaint = new Complaint({
+      name: name?.trim() || undefined,
+      title: title.trim(),
+      complaint: complaint.trim(),
+      email: email?.trim() || undefined,
+      level: level?.trim() || undefined,
+      date: new Date()
+    });
+
+    await newComplaint.save();
+
+    return res.status(201).json({
+      success: true,
+      code: 201,
+      message: "Complaint submitted successfully",
+      data: {
+        id: newComplaint._id
+      }
+    });
+  } catch (error) {
+    console.error('Error saving complaint:', error);
+    return res.status(500).json({
+      success: false,
+      code: 500,
+      message: "Internal server error",
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
+export default router;
